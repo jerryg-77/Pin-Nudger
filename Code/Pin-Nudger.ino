@@ -1,7 +1,7 @@
-// Testing USB joystick function using Arduino Leonardo
-// using MPU6050 as analog x, y and z axis input
-// Code written by Pin Chung  
-// Sep 22, 2020
+// USB joystick function using Arduino Leonardo for nudging
+// using MPU6050 as analog x, y for pinball nudging
+// Code contributions include Code written by Pin Chung  
+// Code Adapted by Jerry Gilley
 
 #include <Joystick.h>
 #include <MPU6050_tockn.h>
