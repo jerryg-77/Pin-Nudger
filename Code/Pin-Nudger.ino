@@ -27,8 +27,8 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,
 float zeroX=0;  //Start X at Zero
 float zeroY=0;  //Start Y at Zero
 
-const float XNUDGE_FORCE = .4;  //Define force on X axis to trigger above and below
-const float YNUDGE_FORCE = .4;  //Define force on Y axis to trigger above and below
+const float XNUDGE_FORCE = .2;  //Define force on X axis to trigger above and below
+const float YNUDGE_FORCE = .2;  //Define force on Y axis to trigger above and below
 
 //upper and lower limit on the acceleration translation from the MPU6050 board.
 int upperLimit = 1023;
@@ -75,18 +75,18 @@ void loop()
    //Keeps from overloading USB bus
    currentTime = millis();
    if (currentTime - lastTime > timeLimit) { //Send Update
-      Joystick.setXAxis(map(x, lowerLimit,upperLimit, 1024,0));
+      Joystick.setXAxis(map(x, lowerLimit,upperLimit, 0,1024));
       Joystick.setYAxis(map(y, lowerLimit,upperLimit, 0, 1024));
       lastTime = millis();
    }
    
    if (x != 0) { //Debug Code, will be removed
         Serial.print ("\n x="); //Debug Code for info, will be removed
-        Serial.print (x); //Debug Code, will be removed
+        Serial.print (x / 1000); //Debug Code, will be removed
    } //Debug Code
    if (y != 0) { //Debug Code, will be removed
         Serial.print(" y="); //Debug Code, will be removed
-        Serial.print (y); //Debug Code, will be removed
+        Serial.print (y / 1000); //Debug Code, will be removed
    } //Debug Code, will be removed
 
 }
