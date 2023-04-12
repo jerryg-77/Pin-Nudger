@@ -68,8 +68,8 @@ void loop()
     y = 0;
  }
    
-   x = x * 2048;  // convert accel to usable axis number
-   y = y * 2048;  // convert accel to usable axis number
+   x = x * 4096;  // convert accel to usable axis number
+   y = y * 4096;  // convert accel to usable axis number
 
    //Joystick updates only sent ever 10 ms as this is as fast as VPX and USB can process changes
    //Keeps from overloading USB bus
