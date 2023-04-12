@@ -3,32 +3,27 @@
 // Code contributions include Code written by Pin Chung  
 // Code Adapted by Jerry Gilley
 
+// Joystick.h library from MHeironimus https://github.com/MHeironimus/ArduinoJoystickLibrary
+// MPU6050_tockn.h library from tockn https://github.com/Tockn/MPU6050_tockn
+
 #include <Joystick.h>
 #include <MPU6050_tockn.h>
 #include <Wire.h>
 
 MPU6050 mpu6050(Wire);
-//Joystick_ Joystick;
 
 Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID, 
-  JOYSTICK_TYPE_GAMEPAD, 0, 0,
-  true, true, false, 
-  false, false, false,
-  false, false, 
-  false, false, false);
+  JOYSTICK_TYPE_GAMEPAD, 0, 0,      // Define controller as Gamepad, zero buttons and zero hats
+  true, true, false,                // Define X and Y axis, no Z axis
+  false, false, false,              // No X, Y or Z rotational axis
+  false, false,                     // No rudder or throttle
+  false, false, false);             // No accelerator, brake or steeting
 
-#define ResetPin 13
-#define Joystick1Pin 9
+float zeroX=0;  //Start X at Zero
+float zeroY=0;  //Start Y at Zero
 
-int lastButtonState=0;
-int currentButtonState;
-
-float zeroX=0;
-float zeroY=0;
-float zeroZ=0;
-
-const float XNUDGE_FORCE = .4;
-const float YNUDGE_FORCE = .4;
+const float XNUDGE_FORCE = .4;  //Define force on X axis to trigger above and below
+const float YNUDGE_FORCE = .4;  //Define force on Y axis to trigger above and below
 
 //upper and lower limit on the angle of the MPU6050 board range.
 int upperLimit = 45;
@@ -46,36 +41,22 @@ void setup() {
 
 }
 
-void ResetMPU6050(float x, float y, float z){
-  //Center the Joystick at current position
-  zeroX=x;
-  zeroY=y;
-
-}
 
 void loop() 
 {
   mpu6050.update();
    float x=(mpu6050.getAccX());
    float y=(mpu6050.getAccY());
-
   
   x-=zeroX;
   y-=zeroY;
-  
-/*   if (x>upperLimit) x=upperLimit;
-   else if (x<lowerLimit) x=lowerLimit;
-   if (y>upperLimit) y=upperLimit;
-   else if (y<lowerLimit) y=lowerLimit;
-*/
-
 
  // Map the angles of x, y and z to joystick position 0 to 1024
  // to reverse the axis, switch the last 2 numbers in the map() function
- if (x < XNUDGE_FORCE && x > (-1* XNUDGE_FORCE)){
+ if (x < XNUDGE_FORCE && x > (-1* XNUDGE_FORCE)){     // If force is between the XNUDGE_FORCE (-XNUDGE_FORCE<>XNUDGE_FORCE) Then make X zero
     x = 0;
  }
-  if (y < YNUDGE_FORCE && y > (-1 * YNUDGE_FORCE)) {
+  if (y < YNUDGE_FORCE && y > (-1 * YNUDGE_FORCE)) {  // If force is between the XNUDGE_FORCE (-YNUDGE_FORCE<>YNUDGE_FORCE) Then make Y zero
     y = 0;
  }
    x = x *1000;
