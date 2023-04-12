@@ -45,7 +45,6 @@ void setup() {
   Joystick.begin();
   Wire.begin();
   mpu6050.begin();
-  mpu6050.calcGyroOffsets(false); //This is is not a necessary call. works fine without it.
   lastTime = 0;
   currentTime = 0;
 }
@@ -81,13 +80,13 @@ void loop()
       lastTime = millis();
    }
    
-   if (x != 0) { //Debug Code
-        Serial.print ("\n x="); //Debug Code
-        Serial.print (x); //Debug Code
+   if (x != 0) { //Debug Code, will be removed
+        Serial.print ("\n x="); //Debug Code for info, will be removed
+        Serial.print (x); //Debug Code, will be removed
    } //Debug Code
-   if (y != 0) { //Debug Code
-        Serial.print(" y="); //Debug Code
-        Serial.print (y); //Debug Code
-   } //Debug Code
+   if (y != 0) { //Debug Code, will be removed
+        Serial.print(" y="); //Debug Code, will be removed
+        Serial.print (y); //Debug Code, will be removed
+   } //Debug Code, will be removed
 
 }
