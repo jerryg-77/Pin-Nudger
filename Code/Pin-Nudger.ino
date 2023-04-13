@@ -85,7 +85,7 @@ void loop()
         Serial.print (x); //Debug Code, will be removed
    } //Debug Code
    if (y != 0) { //Debug Code, will be removed
-        Serial.print(" y="); //Debug Code, will be removed
+        Serial.print("\n y="); //Debug Code, will be removed
         Serial.print (y); //Debug Code, will be removed
    } //Debug Code, will be removed
 
