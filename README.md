@@ -8,3 +8,5 @@ Parts used can be obtained from several sources.  For initial builds I ordered P
 https://www.amazon.com/gp/product/B095SBYB95/ref=ppx_yo_dt_b_asin_title_o00_s00?ie=UTF8&psc=1
 
 https://www.amazon.com/gp/product/B08HCYL8RW/ref=ppx_yo_dt_b_asin_title_o01_s00?ie=UTF8&psc=1
+
+Schematics and PCB are located at https://oshwlab.com/jerry.gilley/usbnudgesensor 
